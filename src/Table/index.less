@@ -1,0 +1,51 @@
+.tui-table {
+  &-header {
+    display: flex;
+    &-item {
+      background-color: rgba(0, 171, 255, 0.2);
+      font-size: 24px;
+      height: 45px;
+      font-family: FZZhengHeiS-EB-GB;
+      font-weight: normal;
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      white-space: break-spaces;
+    }
+  }
+  &-body {
+    &-item {
+      display: flex;
+      &-column-item {
+        font-size: 24px;
+        height: 45px;
+        font-family: FZZhengHeiS-M-GB;
+        font-weight: normal;
+        color: #bfdaec;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        // padding: 0 20px;
+        &.number {
+          font-family: SFU DIN;
+        }
+        .column-item-text {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      &.odd {
+        background-color: rgba(0, 171, 255, 0.08);
+      }
+      &.even {
+        background-color: rgba(0, 171, 255, 0.03);
+      }
+    }
+  }
+}

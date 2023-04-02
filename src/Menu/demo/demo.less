@@ -1,0 +1,90 @@
+.header-menu-level-0 {
+  display: flex;
+  > .menu-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    > .menu-item {
+      font-family: "Alibaba PuHuiTi 2.0";
+      position: relative;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 48px;
+      color: #ffffff;
+      background-repeat: no-repeat;
+      width: 102px;
+      height: 48px;
+      margin-right:15px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      span {
+        text-shadow: 2px 2px 3px rgba(11, 11, 11, 1);
+      }
+      &.select {
+        background: url(/assets/menu-select.png);
+      }
+      &.disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+      }
+    }
+  }
+  .header-menu-level-1 {
+    position: absolute;
+    left:50%;
+    // padding-inline: 30px;
+      transform: translateX(-50%);
+      > .menu-content {
+      width: 184px;
+      margin: 3px auto 0;
+      /* 切换按钮/地图切换 */
+      background: linear-gradient(
+        180.41deg,
+        rgba(33, 75, 124, 0.9) 0.35%,
+        rgba(18, 33, 62, 0.9) 10.59%,
+        rgba(13, 18, 31, 0.9) 47.25%,
+        rgba(18, 32, 52, 0.9) 78.24%,
+        rgba(28, 65, 108, 0.9) 97.62%
+      );
+      border: 1px solid #75b6da;
+      box-shadow: 0px 4px 4px rgba(11, 28, 53, 0.86);
+      box-sizing: border-box;
+      border-radius: 4px;
+      > .menu-item {
+        margin-bottom: 1px;
+        height: 35px;
+        font-family: "Alibaba PuHuiTi 2.0";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+
+        &:first-child {
+          border-radius: 4px 4px 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 4px 4px;
+          margin-bottom: 0px;
+        }
+        &:hover,
+        &.select {
+          background: linear-gradient(
+            90deg,
+            #4ea1cf 0%,
+            rgba(53, 120, 193, 0.3) 100%
+          );
+        }
+        background: linear-gradient(
+          90deg,
+          rgba(78, 161, 207, 0.1) 0%,
+          rgba(53, 120, 193, 0.03) 100%
+        );
+      }
+    }
+  }
+}
