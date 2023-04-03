@@ -22,9 +22,7 @@ export interface ITableProps<T> {
   columns?: IColumn<T>[];
   /**子项的key*/
   rowKey?: IListProps<T>['rowKey'];
-  /** 详见 http://202.104.149.204:4872/detail?name=@vui/list */
   listProps?: IListProps<T>;
-
   /** grid 的配置*/
   /**列间距 */
   columnGap?: number;
