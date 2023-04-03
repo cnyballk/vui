@@ -22,7 +22,7 @@ export interface ITableProps<T> {
   columns?: IColumn<T>[];
   /**子项的key*/
   rowKey?: IListProps<T>['rowKey'];
-  /** 详见 http://202.104.149.204:4872/detail?name=@tui/list */
+  /** 详见 http://202.104.149.204:4872/detail?name=@vui/list */
   listProps?: IListProps<T>;
 
   /** grid 的配置*/
@@ -164,9 +164,9 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
       marginTop = -(listProps!.rowHeight! + rowGap) * skipSize;
     }
     return (
-      <div className={'tui-table'}>
+      <div className={'vui-table'}>
         <Grid
-          className={'tui-table-header'}
+          className={'vui-table-header'}
           style={headerStyle}
           colunm={templateColumns}
           columnGap={columnGap}
@@ -175,7 +175,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
         >
           {columns!.map((column) => (
             <div
-              className={'tui-table-header-item'}
+              className={'vui-table-header-item'}
               key={column.key}
               style={headerItemStyle}
             >
@@ -184,7 +184,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
           ))}
         </Grid>
 
-        <div className={'tui-table-body'} style={bodyStyle}>
+        <div className={'vui-table-body'} style={bodyStyle}>
           <List
             {...listProps}
             rowKey={rowKey}
@@ -201,7 +201,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
               return (
                 <Grid
                   className={classnames({
-                    ['tui-table-bodyItem']: true,
+                    ['vui-table-body-item']: true,
                     [oddClassName || 'odd']: actualRowIndex % 2 == 1,
                     [evenClassName || 'even']: actualRowIndex % 2 == 0,
                   })}
@@ -212,7 +212,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
                 >
                   {columns!.map((column, columnIndex) => (
                     <div
-                      className={'tui-table-body-item-column-item'}
+                      className={'vui-table-body-item-column-item'}
                       key={data[column.key]}
                       style={columnItemStyle}
                     >

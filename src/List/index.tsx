@@ -172,7 +172,7 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
     // }
     return (
       <div
-        className={`tui-list ${className}`}
+        className={`vui-list ${className}`}
         style={{ ...style, height: autoHeight ? 'auto' : height }}
         onScroll={this.onScroll}
       >
@@ -185,7 +185,7 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
           {typeof loading === 'boolean' ? 'loading...' : loading}
           {loadMore}
           {!loading && !loadMore && !children && childrenList.length === 0 && (
-            <div className="tui-empty-text">{emptyText}</div>
+            <div className="vui-empty-text">{emptyText}</div>
           )}
         </div>
         <div style={{ height: autoHeight ? 'auto' : scrollHeight }} />

@@ -35,7 +35,7 @@ const dataColumns = [
     key: 'number',
     render: (item, key) => (
       <div
-        style={{ color: '#F7DF57', fontFamily: 'AgencyFB-Bold', fontSize: 36 }}
+        style={{ color: '#F7DF57', fontSize: 20 }}
       >
         {item[key]}
       </div>
