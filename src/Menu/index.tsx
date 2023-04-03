@@ -1,8 +1,8 @@
-import React from "react";
-import "./index.less";
-import { emitMsgs } from "./utils";
-import classnames from "classnames";
-import { IMenu } from "./types";
+import classnames from 'classnames';
+import React from 'react';
+import './index.less';
+import { IMenu } from './types';
+import { emitMsgs } from './utils';
 
 interface IMenuProps {
   //控制菜单的数据源
@@ -24,6 +24,11 @@ interface IMenuProps {
   socket: any;
   isLink?: boolean;
   history?: any;
+  renderItem?: (
+    menu: IMenu,
+    index: number,
+    isSelect: boolean,
+  ) => React.ReactNode;
 }
 
 interface IMenuState {
@@ -63,7 +68,6 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   setSelectIndex(selectIndex: number[]) {
     this.allSelectIndexs = [selectIndex];
     this.props.onChange?.(this.allSelectIndexs);
-    // console.log("selectIndex", selectIndex, this.props.defaultSelectIndex!)
     this.setState({ selectIndex });
   }
   setTabIndex = (menuItem: IMenu, index: number) => {
@@ -76,11 +80,13 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   singleSelect = (menuItem: IMenu, index: number) => {
     let { unselect, data, socket } = this.props;
     let selectIndex = this.state.selectIndex[0];
-    if (selectIndex === index) {
+    let isSelect = selectIndex === index;
+    if (isSelect) {
       if (unselect) {
         this.setSelectIndex([]);
         emitMsgs(socket, menuItem.unselectMsgs);
       }
+      emitMsgs(socket, menuItem.msgs);
     } else {
       if (selectIndex !== undefined) {
         emitMsgs(socket, data[selectIndex].unselectMsgs);
@@ -93,9 +99,12 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
     const { unselect, socket } = this.props;
     let selectIndex = this.state.selectIndex.concat([]);
     let _index = selectIndex.indexOf(index);
-    if (_index !== -1 && unselect) {
-      selectIndex.splice(_index, 1);
-      emitMsgs(socket, menuItem.unselectMsgs);
+    let isSelect = _index !== -1;
+    if (isSelect) {
+      if (unselect) {
+        selectIndex.splice(_index, 1);
+        emitMsgs(socket, menuItem.unselectMsgs);
+      }
     } else {
       selectIndex.push(index);
       emitMsgs(socket, menuItem.msgs);
@@ -114,12 +123,13 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   render() {
     const {
       data,
-      className = "",
+      className = '',
       prefixClassName = className,
       level = 0,
       socket,
       isLink,
       history,
+      renderItem,
     } = this.props;
     const { selectIndex } = this.state;
     return (
@@ -127,14 +137,14 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
         className={classnames([
           'vui-menu-wrap',
           className,
-          prefixClassName + "-level-" + level,
+          prefixClassName + '-level-' + level,
         ])}
       >
         <div className="menu-content">
           {data.map((menuItem, menuIndex) => {
             let isSelect = false;
             if (isLink) {
-              if (menuItem.url === "/") {
+              if (menuItem.url === '/') {
                 isSelect = history.location.pathname === menuItem.url!;
               } else {
                 isSelect =
@@ -148,10 +158,10 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
               <React.Fragment key={menuItem.label}>
                 <div
                   className={classnames({
-                    "menu-item": true,
+                    'menu-item': true,
                     select: isSelect,
                     disable: !!menuItem.isDisable,
-                    "vui-disable": !!menuItem.isDisable,
+                    'vui-disable': !!menuItem.isDisable,
                   })}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -161,13 +171,18 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                         history.push(menuItem.url!);
                       }
                     }
-
                   }}
                 >
-                  {!!menuItem.icon && (
-                    <img src={`/assets/${menuItem.icon}.png`} alt="" />
+                  {renderItem ? (
+                    renderItem(menuItem, menuIndex, isSelect)
+                  ) : (
+                    <>
+                      {!!menuItem.icon && (
+                        <img src={`/assets/${menuItem.icon}.png`} alt="" />
+                      )}
+                      <span>{menuItem.label}</span>
+                    </>
                   )}
-                  <span>{menuItem.label}</span>
                   {isSelect && menuItem.children!?.length > 0 && (
                     <Menu
                       isLink={isLink}
