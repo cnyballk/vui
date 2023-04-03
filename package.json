@@ -1,6 +1,6 @@
 {
   "name": "@cnyballk/vui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "license": "MIT",
   "module": "dist/index.js",
@@ -39,10 +39,12 @@
     ]
   },
   "dependencies": {
+    "@cnyballk/full-screen": "^1.0.5",
     "ahooks": "^3.7.6",
     "classnames": "^2.3.2",
     "framer-motion": "^10.10.0",
-    "react-countup": "^6.4.2"
+    "react-countup": "^6.4.2",
+    "socket.io-client": "^4.6.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

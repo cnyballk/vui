@@ -8,3 +8,5 @@ export { default as Menu } from './Menu';
 export { default as Table } from './Table';
 export { default as MotionPanel } from './MotionPanel';
 export * from './utils';
+export * from '@cnyballk/full-screen';
+export * as io from 'socket.io-client';
