@@ -193,6 +193,8 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                       defaultSelectIndex={menuItem.defaultSelectIndex}
                       unselect={menuItem.unselect}
                       multiSelect={menuItem.multiSelect}
+                      history={history}
+                      renderItem={renderItem}
                       onChange={(selectIndexs) => {
                         this.allSelectIndexs = [
                           this.allSelectIndexs[0],
