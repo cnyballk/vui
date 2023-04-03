@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Children, useEffect, useRef, useState } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 const variants = {
   open: {
     opacity: 1,
@@ -46,8 +46,6 @@ export default function Panel({
       setIsOpen(false);
     }
   }, [isShow]);
-  console.log(isOpen);
-
   return (
     <motion.div
       variants={variants}

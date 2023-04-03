@@ -1,12 +1,7 @@
 export * from 'ahooks';
-export { default as classnames } from 'classnames';
-export { default as CountUp } from './CountUp';
-export { default as Flipper } from './Flipper';
-export { default as Grid } from './Grid';
-export { default as List } from './List';
-export { default as Menu } from './Menu';
-export { default as Table } from './Table';
-export { default as MotionPanel } from './MotionPanel';
+export * from './components';
 export * from './utils';
 export * from '@cnyballk/full-screen';
+export { default as fullScreen } from '@cnyballk/full-screen';
+export { default as classnames } from 'classnames';
 export * as io from 'socket.io-client';
