@@ -9,25 +9,33 @@ export interface IGridProps {
   rowGap?: number;
   marginBottom?: string | number;
   children: React.ReactNode;
+  [key: string]: any;
 }
-const Grid: React.FC<IGridProps> = (props) => {
-  let colunm = props.colunm;
-  if (typeof props.colunm === 'number') {
+const Grid: React.FC<IGridProps> = ({
+  colunm,
+  columnGap,
+  marginBottom,
+  rowGap,
+  style,
+  children,
+  ...otherProps
+}) => {
+  if (typeof colunm === 'number') {
     colunm = classNames({}, new Array(colunm).fill('1fr') as any);
   }
   return (
     <div
-      className={props.className}
       style={{
         display: 'grid',
         gridTemplateColumns: colunm,
-        columnGap: props.columnGap,
-        rowGap: props.rowGap,
-        marginBottom: props.marginBottom,
-        ...props.style,
+        columnGap: columnGap,
+        rowGap: rowGap,
+        marginBottom: marginBottom,
+        ...style,
       }}
+      {...otherProps}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
