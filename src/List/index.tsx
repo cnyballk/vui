@@ -184,12 +184,7 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
           {childrenList}
           {children}
           {!!loading ? (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Loading></Loading>
             </div>
           ) : (

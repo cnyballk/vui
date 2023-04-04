@@ -144,11 +144,11 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
           {data.map((menuItem, menuIndex) => {
             let isSelect = false;
             if (isLink) {
-              if (menuItem.url === '/') {
-                isSelect = history.location.pathname === menuItem.url!;
+              const key = menuItem.key || menuItem.url;
+              if (key === '/') {
+                isSelect = history.location.pathname === key;
               } else {
-                isSelect =
-                  history.location.pathname.indexOf(menuItem.url!) !== -1;
+                isSelect = history.location.pathname.indexOf(key) !== -1;
               }
             } else {
               isSelect = selectIndex.indexOf(menuIndex) !== -1;
@@ -168,7 +168,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                     if (!menuItem.isDisable) {
                       this.setTabIndex(menuItem, menuIndex);
                       if (isLink) {
-                        history.push(menuItem.url!);
+                        menuItem.url && history.push(menuItem.url);
                       }
                     }
                   }}

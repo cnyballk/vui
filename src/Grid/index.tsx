@@ -19,12 +19,12 @@ const Grid: React.FC<IGridProps> = (props) => {
     <div
       className={props.className}
       style={{
-        ...props.style,
         display: 'grid',
         gridTemplateColumns: colunm,
         columnGap: props.columnGap,
         rowGap: props.rowGap,
         marginBottom: props.marginBottom,
+        ...props.style,
       }}
     >
       {props.children}

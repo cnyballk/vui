@@ -211,7 +211,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
                   {columns!.map((column, columnIndex) => (
                     <div
                       className={'vui-table-body-item-column-item'}
-                      key={data[column.key]}
+                      key={column.key}
                       style={columnItemStyle}
                     >
                       <div className={'column-item-text'}>
