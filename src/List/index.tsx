@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../Loading';
 import { debounce } from '../utils';
 import './index.less';
 
@@ -182,7 +183,18 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
         >
           {childrenList}
           {children}
-          {typeof loading === 'boolean' ? 'loading...' : loading}
+          {!!loading ? (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Loading></Loading>
+            </div>
+          ) : (
+            loading
+          )}
           {loadMore}
           {!loading && !loadMore && !children && childrenList.length === 0 && (
             <div className="vui-empty-text">{emptyText}</div>

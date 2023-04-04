@@ -103,11 +103,11 @@ export default () => {
     >
       <Table
         rowGap={10}
-        listProps={{ rowHeight: 45, autoHeight: true, hasLongList: false }}
+        listProps={{ rowHeight: 30, autoHeight: true, hasLongList: false }}
         dataSource={data}
         columns={dataColumns}
         columnGap={10}
-        scrollBody={{ showSize: 7, skipSize: 1, time: 5000 }}
+        // scrollBody={{ showSize: 7, skipSize: 1, time: 5000 }}
       />
     </div>
   );
