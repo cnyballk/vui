@@ -146,7 +146,6 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
         scrollCurrent + scrollSize,
       );
     }
-
     const items = splitDataSource.map((item: any, index: number) =>
       this.renderItem(item, index),
     );
@@ -179,7 +178,7 @@ class List<T> extends React.Component<IListProps<T>, ListState> {
       >
         <div
           className="list-content"
-          style={{ ..._listContentStyle, ...listContentStyleProps }}
+          style={{ ..._listContentStyle, ...listContentStyleProps,position: autoHeight ? 'relative' :'absolute' }}
         >
           {childrenList}
           {children}

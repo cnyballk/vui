@@ -107,7 +107,7 @@ export default () => {
         dataSource={data}
         columns={dataColumns}
         columnGap={10}
-        // scrollBody={{ showSize: 7, skipSize: 1, time: 5000 }}
+        scrollBody={{ showSize: 7, skipSize: 1, time: 5000 }}
       />
     </div>
   );
