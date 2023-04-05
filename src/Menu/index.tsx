@@ -24,6 +24,7 @@ interface IMenuProps {
   socket: any;
   isLink?: boolean;
   history?: any;
+  childShowType?: 'select';
   renderItem?: (
     menu: IMenu,
     index: number,
@@ -130,6 +131,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
       isLink,
       history,
       renderItem,
+      childShowType,
     } = this.props;
     const { selectIndex } = this.state;
     return (
@@ -183,27 +185,28 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                       <span>{menuItem.label}</span>
                     </>
                   )}
-                  {isSelect && menuItem.children!?.length > 0 && (
-                    <Menu
-                      isLink={isLink}
-                      data={menuItem.children || []}
-                      socket={socket}
-                      level={level + 1}
-                      prefixClassName={prefixClassName}
-                      defaultSelectIndex={menuItem.defaultSelectIndex}
-                      unselect={menuItem.unselect}
-                      multiSelect={menuItem.multiSelect}
-                      history={history}
-                      renderItem={renderItem}
-                      onChange={(selectIndexs) => {
-                        this.allSelectIndexs = [
-                          this.allSelectIndexs[0],
-                          ...selectIndexs,
-                        ];
-                        this.props.onChange?.(this.allSelectIndexs);
-                      }}
-                    />
-                  )}
+                  {(childShowType === 'select' ? isSelect : true) &&
+                    menuItem.children!?.length > 0 && (
+                      <Menu
+                        isLink={isLink}
+                        data={menuItem.children || []}
+                        socket={socket}
+                        level={level + 1}
+                        prefixClassName={prefixClassName}
+                        defaultSelectIndex={menuItem.defaultSelectIndex}
+                        unselect={menuItem.unselect}
+                        multiSelect={menuItem.multiSelect}
+                        history={history}
+                        renderItem={renderItem}
+                        onChange={(selectIndexs) => {
+                          this.allSelectIndexs = [
+                            this.allSelectIndexs[0],
+                            ...selectIndexs,
+                          ];
+                          this.props.onChange?.(this.allSelectIndexs);
+                        }}
+                      />
+                    )}
                 </div>
               </React.Fragment>
             );
