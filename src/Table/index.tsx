@@ -58,7 +58,7 @@ export interface ITableProps<T> {
   };
 
   /** 事件 */
-  onEvent: Record<string, (event: any) => void>;
+  onEvent?: Record<string, (event: any) => void>;
 }
 
 interface ITableState<T> {
@@ -155,6 +155,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
       oddClassName,
       evenClassName,
       scrollBody,
+      onEvent = {},
     } = this.props;
     const { renderData, animationIng, skipAllNum } = this.state;
     let marginTop = 0;
@@ -211,8 +212,8 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
                   colunm={templateColumns}
                   columnGap={columnGap}
                   onClick={() => {
-                    if (this.props.onEvent['onBodyItemClick']) {
-                      this.props.onEvent['onBodyItemClick'](data);
+                    if (onEvent['onBodyItemClick']) {
+                      onEvent['onBodyItemClick'](data);
                     }
                   }}
                 >
