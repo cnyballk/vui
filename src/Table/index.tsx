@@ -170,7 +170,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
         <Grid
           className={'vui-table-header'}
           style={headerStyle}
-          colunm={templateColumns}
+          column={templateColumns}
           columnGap={columnGap}
           //@ts-ignore
           marginBottom={headerStyle?.marginBottom}
@@ -209,7 +209,7 @@ class Table<T> extends React.Component<ITableProps<T>, ITableState<T>> {
                   })}
                   style={{ ...bodyItemStyle }}
                   marginBottom={rowGap}
-                  colunm={templateColumns}
+                  column={templateColumns}
                   columnGap={columnGap}
                   onClick={() => {
                     if (onEvent['onBodyItemClick']) {

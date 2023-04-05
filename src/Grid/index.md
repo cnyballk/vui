@@ -15,7 +15,7 @@ const Block = (props) => (
 
 export default () => {
   return (
-    <Grid colunm={2} columnGap={20}>
+    <Grid column={2} columnGap={20}>
       <Block color="red" />
       <Block color="#4569d4" />
     </Grid>
@@ -38,7 +38,7 @@ const Block = (props) => (
 
 export default () => {
   return (
-    <Grid colunm={2} type={1} rowGap={20}>
+    <Grid column={2} type={1} rowGap={20}>
       <Block color="red" />
       <Block color="#4569d4" />
     </Grid>
@@ -61,8 +61,8 @@ const Block = (props) => (
 
 export default () => {
   return (
-    <Grid colunm={2} type={1} rowGap={20}>
-      <Grid colunm={3} columnGap={20}>
+    <Grid column={2} type={1} rowGap={20}>
+      <Grid column={3} columnGap={20}>
         <Block color="red" />
         <Block color="pink" />
         <Block color="gray" />

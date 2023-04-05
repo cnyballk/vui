@@ -4,7 +4,7 @@ export interface IGridProps {
   className?: string;
   style?: React.CSSProperties;
   //行数
-  colunm: number | string;
+  column: number | string;
   columnGap?: number;
   rowGap?: number;
   marginBottom?: string | number;
@@ -12,7 +12,7 @@ export interface IGridProps {
   [key: string]: any;
 }
 const Grid: React.FC<IGridProps> = ({
-  colunm,
+  column,
   columnGap,
   marginBottom,
   rowGap,
@@ -20,14 +20,14 @@ const Grid: React.FC<IGridProps> = ({
   children,
   ...otherProps
 }) => {
-  if (typeof colunm === 'number') {
-    colunm = classNames({}, new Array(colunm).fill('1fr') as any);
+  if (typeof column === 'number') {
+    column = classNames({}, new Array(column).fill('1fr') as any);
   }
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: colunm,
+        gridTemplateColumns: column,
         columnGap: columnGap,
         rowGap: rowGap,
         marginBottom: marginBottom,
