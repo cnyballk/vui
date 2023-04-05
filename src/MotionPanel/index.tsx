@@ -57,6 +57,7 @@ export default function Panel({
         right,
         top,
         bottom,
+        overflow:isOpen ? 'auto' : 'hidden'
       }}
     >
       {Children.map(children, (Item) => (
