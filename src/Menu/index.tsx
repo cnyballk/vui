@@ -179,9 +179,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                     renderItem(menuItem, menuIndex, isSelect)
                   ) : (
                     <>
-                      {!!menuItem.icon && (
-                        <img src={`/assets/${menuItem.icon}.png`} alt="" />
-                      )}
+                      {menuItem.icon}
                       <span>{menuItem.label}</span>
                     </>
                   )}
