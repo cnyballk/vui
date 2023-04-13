@@ -51,6 +51,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
     };
     this.changeDefaultIndex();
   }
+  firstMount = true;
   allSelectIndexs: number[][] = [];
   componentDidMount() {
     this.props.onRef && this.props.onRef(this);
@@ -151,6 +152,10 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
                 isSelect = history.location.pathname === key;
               } else {
                 isSelect = history.location.pathname.indexOf(key) !== -1;
+              }
+              if (this.firstMount) {
+                this.setTabIndex(menuItem, menuIndex);
+                this.firstMount = false;
               }
             } else {
               isSelect = selectIndex.indexOf(menuIndex) !== -1;
