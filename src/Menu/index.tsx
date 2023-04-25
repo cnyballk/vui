@@ -153,7 +153,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
               } else {
                 isSelect = history.location.pathname.indexOf(key) !== -1;
               }
-              if (this.firstMount) {
+              if (isSelect && this.firstMount) {
                 this.setTabIndex(menuItem, menuIndex);
                 this.firstMount = false;
               }
