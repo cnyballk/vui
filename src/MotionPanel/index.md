@@ -18,7 +18,7 @@ export default () => {
   const [show, setShow] = useState(true);
   return (
     <div style={{ height: 200 }}>
-      <MotionPanel left={40} top={20} isShow={show}>
+      <MotionPanel left={40} top={20} isShow={show} >
         <Block color="red" />
         <Block color="#4569d4" />
       </MotionPanel>

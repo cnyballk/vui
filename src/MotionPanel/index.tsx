@@ -1,3 +1,4 @@
+import { useUpdateEffect } from 'ahooks';
 import { motion } from 'framer-motion';
 import React, { Children, useEffect, useRef, useState } from 'react';
 const variants = {
@@ -21,6 +22,7 @@ export default function Panel({
   bottom = 'unset',
   closedX = -50,
   closedY = 0,
+  destroyOnClose = false,
 }: any) {
   const itemVariants = {
     open: { opacity: 1, x: 0, y: 0 },
@@ -46,6 +48,13 @@ export default function Panel({
       setIsOpen(false);
     }
   }, [isShow]);
+  const [panelkey, setPanelkey] = useState('Panel-' + Math.random());
+
+  useUpdateEffect(() => {
+    if (destroyOnClose && isOpen) {
+      setPanelkey('Panel-' + Math.random());
+    }
+  }, [isOpen]);
   return (
     <motion.div
       variants={variants}
@@ -57,12 +66,14 @@ export default function Panel({
         right,
         top,
         bottom,
-        overflow:isOpen ? 'auto' : 'hidden'
+        overflow: isOpen ? 'auto' : 'hidden',
       }}
     >
-      {Children.map(children, (Item) => (
-        <motion.div variants={itemVariants}>{Item}</motion.div>
-      ))}
+      <div className="panel-content" key={panelkey}>
+        {Children.map(children, (Item) => (
+          <motion.div variants={itemVariants}>{Item}</motion.div>
+        ))}
+      </div>
     </motion.div>
   );
 }

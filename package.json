@@ -1,6 +1,6 @@
 {
   "name": "@cnyballk/vui",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "",
   "license": "MIT",
   "module": "dist/index.js",

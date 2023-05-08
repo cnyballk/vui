@@ -1,3 +1,4 @@
+import { Socket } from 'socket.io-client';
 import { IMsgItem } from './types';
 
 export const emitMsg = (socket:any, msg: IMsgItem) => {
@@ -6,12 +7,10 @@ export const emitMsg = (socket:any, msg: IMsgItem) => {
 
 /**
  * emitMsgs 发送消息组
- * @param socket theia-socket-io-client 实例
+ * @param socket socket-io-client 实例
  * @param msgs 消息组
- * @param negation 是否取反
- * @param action 发送哪些类型的消息
  */
-export const emitMsgs = (socket: any, msgs?: IMsgItem[]) => {
+export const emitMsgs = (socket: Socket, msgs?: IMsgItem[]) => {
   msgs?.forEach((msg) => {
     emitMsg(socket, msg);
   });
